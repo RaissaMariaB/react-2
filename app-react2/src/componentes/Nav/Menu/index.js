@@ -1,49 +1,58 @@
 import React from 'react'
 import './style.css'
+import { Link } from 'react-router-dom'
 
 
 
-class Menu extends React.Component{
-    constructor(props){
-    super(props)
-    this.state = {
-        aberto:false
 
+class Menu extends React.Component {
+    constructor (props) {
+      super(props)
+      this.state = {
+        aberto: false
+      }
     }
+  
+    handleAbreOuFecha = e => {
+      this.setState(prevState => {
+        return { aberto: !prevState.aberto }
+      })
     }
-
-    handleAbreOuFecha = e =>{
-        this.setState(estadoAnterior =>{
-            return{
-               aberto: !estadoAnterior.aberto
-            }
-        })
-    }
-
-    render(){
-        let classesDasOpcoes = 'navbar-menu__opcoes'
-        let classesDoBotao = 'navbar-menu__botao'
-
-        if(this.state.aberto){
-            classesDasOpcoes += ' navbar-menu__opcoes--aberto'
-            classesDoBotao += ' navbar-menu__botao--aberto'
-        }
-        return(
-        <div className="nav-menu navbar-links">
-            <span className={classesDoBotao} onClick={this.handleAbreOuFecha}>
-                Menu
-            </span>
-            <ul className={classesDasOpcoes}>
-                <li>Home</li>
-                <li>Contao</li>
-                <li>Mensagem</li>
-            </ul>
-
+  
+    render () {
+      let classesDasOpcoes = 'navbar-menu__opcoes'
+      let classesDoBotao = 'navbar-menu__botao'
+  
+      if (this.state.aberto) {
+        classesDasOpcoes += ' navbar-menu__opcoes--aberto'
+        classesDoBotao += ' navbar-menu__botao--aberto'
+      }
+  
+      return (
+        <div className='navbar-menu navbar-links'>
+          <span className={classesDoBotao} onClick={this.handleAbreOuFecha}>
+            Menu
+          </span>
+          <ul className={classesDasOpcoes}>
+            <li>
+              <Link to='/' className='navbar-links__ativo'>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to='/contato' className='navbar-links__ativo'>
+                Contato
+              </Link>
+            </li>
+            <li>
+              <Link to='/chat' className='navbar-links__ativo'>
+                Chat
+              </Link>
+            </li>
+          </ul>
         </div>
-        )
-
+      )
     }
-    
-}
+  }
 
 export  default Menu
