@@ -1,13 +1,13 @@
 import React from 'react'
+import Formulario from './Fomulario'
+
 
 import './style.css'
 
 function Contato (){
     return(
         <section className="contato">
-            <h2>
-                Essa é a página de contato
-            </h2>
+            <Formulario/>
 
         </section>
     )
